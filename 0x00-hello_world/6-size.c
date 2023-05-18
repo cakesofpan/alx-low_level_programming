@@ -13,10 +13,10 @@ int main(void)
 	long long int tlonglongint;
 	float tfloat;
 
-	printf("Size of a char: %zu byte(s)", sizeof(tchar));
-	printf("Size of an int: %zu byte(s)", sizeof(tint));
-	printf("Size of a long int: %zu byte(s)", sizeof(tlongint));
-	printf("Size of a long long int: %zu byte(s)", sizeof(tlonglongint));
-	printf("Size of a float: %zu byte(s)", sizeof(tfloat));
+	printf("Size of a char: %zu byte(s)\n", sizeof(tchar));
+	printf("Size of an int: %zu byte(s)\n", sizeof(tint));
+	printf("Size of a long int: %zu byte(s)\n", sizeof(tlongint));
+	printf("Size of a long long int: %zu byte(s)\n", sizeof(tlonglongint));
+	printf("Size of a float: %zu byte(s)\n", sizeof(tfloat));
 	return (0);
 }
