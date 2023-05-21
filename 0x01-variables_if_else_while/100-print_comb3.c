@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - prints all single digit numbers from 0
+ * main - prints all possible different combinations of two digits
  *
  * Return: Always 0;
  */
@@ -23,5 +23,6 @@ int main(void)
 			}
 		}
 	}
+	putchar('\n');
 	return (0);
 }

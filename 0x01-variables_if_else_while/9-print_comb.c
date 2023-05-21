@@ -13,8 +13,8 @@ int main(void)
 	{
 		putchar(48 + t);
 		putchar(',');
+		putchar(' ');
 	}
-	putchar('$');
 	putchar('\n');
 	return (0);
 }
