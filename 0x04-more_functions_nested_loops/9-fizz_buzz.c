@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "main.h"
 /**
- * main - prints the Fizz Buzz test (multiples of 3 = fizz, 0f 5 = buzz, of both =fizzbuzz
+ * main - prints a Fizz Buzz test (multiples of 3 =fizz,5 =buzz,both =fizzbuzz
  *
  * Return: Always 0
  */
-int main()
+int main(void)
 {
 	int t;
 
