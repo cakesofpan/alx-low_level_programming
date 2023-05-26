@@ -9,7 +9,7 @@
 void print_diagonal(int n)
 {
 	char diagonal = '\\';
-	int t, size;//distance to be moved from the margin;
+	int t, size;/*distance to be moved from the margin;*/
 
 	for (t = 0; t <= n; t++)
 	{
@@ -18,7 +18,7 @@ void print_diagonal(int n)
 			if (n > 0)
 			{
 				if (size == t)
-					_putchar(t);
+					_putchar(diagonal);
 				else
 					_putchar(' ');
 			}
