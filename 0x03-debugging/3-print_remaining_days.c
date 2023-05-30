@@ -14,12 +14,12 @@ void print_remaining_days(int month, int day, int year)
 {
 	int total_days, remaining_days;
 
-	if (month > 2 && ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)))
+	if (month > 2 && (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)))
 	{
 		day++;
 	}
 
-	total_days = leap ? 366 : 365;
+	total_days = ((year % 4 == 0) && (year % 100 != 0)) ? 366 : 365;
 	remaining_days = total_days - day;
 
 	if (month == 2 && day > 29)
