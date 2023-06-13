@@ -4,12 +4,12 @@
 #include "main.h"
 
 /**
- * _strdu - duplicates a string
+ * _strdup - duplicates a string
  * @str: string to be copied
  *
  * Return: a pointer to duplicated string, else NULL
  */
-char *_strdu(char *str)
+char *_strdup(char *str)
 {
 	char *dup;
 
