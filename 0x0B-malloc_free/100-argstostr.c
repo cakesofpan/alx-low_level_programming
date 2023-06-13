@@ -12,7 +12,7 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int t, q, arglen;
+	int t, arglen;
 	int totallen = 0, current = 0;
 	char *result;
 
