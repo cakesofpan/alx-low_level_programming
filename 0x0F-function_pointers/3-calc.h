@@ -24,10 +24,7 @@ typedef struct op
  *
  * Return: character
  */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
+int _putchar(char c);
 int op_add(int a, int b);
 int op_sub(int a, int b);
 int op_mul(int a, int b);
