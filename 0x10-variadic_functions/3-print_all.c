@@ -8,44 +8,48 @@
  */
 void print_all(const char * const format, ...)
 {
-	const char *result;
-	char c;
-	int i;
-	float f;
-	char *s;
+	int t = 0, u = 0, v = 0;
+	char *string;
+	const char letters[] = "cifs";
 
 	va_list print;
 
 	va_start(print, format);
 
-	result = format;
-	while (*result != '\0')
+	while (format && format[t])
 	{
-		if (*result == 'c')
+		while (letters[u])
 		{
-			c = (char)va_arg(print, int);
-			printf("%c, ", c);
+			if(format[t] == letters[u] && v)
+			{
+				printf(", ");
+				break;
+			}
+			u++;
 		}
-		else if (*result == 'i')
+		switch (format[t])
 		{
-			i = va_arg(print, int);
-			printf("%d, ", i);
-		}
-		else if (*result == 'f')
-		{
-			f = (float)va_arg(print, double);
-			printf("%f, ", f);
-		}
-		else if (*result == 's')
-		{
-			s = va_arg(print, char*);
-			if (s == NULL)
+		case 'c':
+			printf("%c", va_arg(print, int)), v = 1;
+			break;
+		case 'i':
+                        printf("%d", va_arg(print, int)), v = 1;
+                        break;
+		case 'f':
+                        printf("%f", va_arg(print, double)), v = 1;
+                        break;
+		case 's':
+                        string = va_arg(print, char *), v = 1;
+			if (!string)
+			{
 				printf("(nil)");
-			else
-				printf("%s", s);
+				break;
+			}
+			printf("%s", string);
+                        break;
 		}
-		result++;
+		t++;
 	}
-	va_end(print);
 	printf("\n");
+	va_end(print);
 }
