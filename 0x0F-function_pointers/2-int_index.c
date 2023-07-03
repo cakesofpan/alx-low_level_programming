@@ -24,17 +24,14 @@ int int_index(int *array, int size, int (*cmp)(int))
 {
 	int t;
 
-	if (size <= 0)
+	if (size < 1 || array == NULL || cmp == NULL)
 		return (-1);
 
-	else
+	for (t = 0; t < size; t++)
 	{
-		for (t = 0; t < size; t++)
-		{
-			cmp = &compare;
-			if (cmp(array[t]) == 0)
-				return (t);
-		}
+		if (cmp(array[t]))
+			return (t);
 	}
+
 	return (-1);
 }
