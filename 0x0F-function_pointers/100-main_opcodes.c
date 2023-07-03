@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * main - prints opcodes of its own function
+ * @argc: argument count
+ * @argv: arguments
+ *
+ * Return: Always 0
+ */
 int main(int argc, char *argv[])
 {
 	int t, bytes;
