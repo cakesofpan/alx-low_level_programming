@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
 	int t, bytes;
 	unsigned char *ptr_main;
-	unsigned char *main;
+	unsigned char *main_vari;
 
 	if (argc != 2)
 	{
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	}
 
 	bytes = atoi(argv[1]);
-	ptr_main = main;
+	ptr_main = (unsigned char*)&main_vari;
 
 	if (bytes < 0)
 	{
