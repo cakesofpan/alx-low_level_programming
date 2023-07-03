@@ -1,8 +1,7 @@
-#include <stdio.h>
 #include "3-calc.h"
 
 /**
- * get_op_func: selects the correct operations given
+ * get_op_func - selects the correct operations given
  * @s: operator
  *
  * Return: pointer to the function containing correct operator
@@ -17,12 +16,14 @@ int (*get_op_func(char *s))(int, int)
 		{"%", op_mod},
 		{NULL, NULL}
 	};
-	int i;
+	int t = 0;
 
-	if (ops[i] == NULL)
-		return (NULL);
-
-	else
-		return (ops[i]);
+	while (ops[t].op)
+	{
+		if (strcmp(ops[t].op, s) == 0)
+			return (ops[t].f);
+		t++;
+	}
+	return (NULL);
 }
 

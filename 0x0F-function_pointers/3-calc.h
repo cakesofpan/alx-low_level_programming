@@ -2,6 +2,9 @@
 #define CALC_H
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * struct op - Struct op
@@ -15,9 +18,15 @@ typedef struct op
 	int (*f)(int a, int b);
 } op_t;
 
+/**
+ * _putchar - prints a character
+ * @c: a character
+ *
+ * Return: character
+ */
 int _putchar(char c)
 {
-	putchar(c);
+	return (write(1, &c, 1));
 }
 int op_add(int a, int b);
 int op_sub(int a, int b);

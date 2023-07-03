@@ -11,17 +11,15 @@
 int main(int argc, char *argv[])
 {
 	int t, bytes;
-	unsigned char *ptr_main;
-	unsigned char *main_vari;
+	char *arr;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
-		return (1);
+		exit(1);
 	}
 
 	bytes = atoi(argv[1]);
-	ptr_main = (unsigned char*)&main_vari;
 
 	if (bytes < 0)
 	{
@@ -29,9 +27,16 @@ int main(int argc, char *argv[])
 		return (2);
 	}
 
-	for (t = 0; t < bytes; t++)
-		printf("%02x", ptr_main[t]);
+	arr = (char *)main;
 
-	printf("\n");
+	for (t = 0; t < bytes; t++)
+	{
+		if (t == bytes - 1)
+		{
+			printf("%02hhx\n", arr[t]);
+			break;
+		}
+		printf("%02hhx", arr[t]);
+	}
 	return (0);
 }
