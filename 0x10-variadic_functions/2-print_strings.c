@@ -20,7 +20,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	{
 		str = va_arg(ap, const char *);
 
-		if (str[t] == 0 || str[t] == '\0')
+		if (str == NULL)
 			printf("(nil)");
 
 		if (t == n - 1 || separator == NULL)
