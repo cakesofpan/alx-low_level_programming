@@ -10,22 +10,16 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int *result;
-	int t;
+	void *result;
 
 	result = malloc(nmemb * size);
 
 	if (nmemb == 0 || size == 0)
 		return (0);
 
-	else
-	{
-		while (result[t] < '\0')
-		{
-			result[t] = 0;
-			t++;
-		}
-	}
+	if (result != NULL)
+		memset(result, 0, nmemb * size);
+
 	return (result);
 	free(result);
 }

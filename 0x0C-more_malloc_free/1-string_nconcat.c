@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "main.h"
 
 /**
@@ -14,18 +11,27 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *joined;
+	size_t s1_len, s2_len;
 
-	joined = malloc(sizeof(char));
-	strcpy(joined, s1);
-
-	if (n >= strlen(s2))
-		strcat(joined, s2);
-
-	else
-		strncat(joined, s2, n);
+	if (s1 == NULL)
+		s1 = "";
 
 	if (s2 == NULL)
-		s2 = " ";
+		s2 = "";
+
+	s1_len = strlen(s1);
+	s2_len = strlen(s2);
+
+	if (n >= s2_len)
+		n = s2_len;
+
+	joined = malloc((s1_len + n + 1) * sizeof(char));
+
+	if (joined == NULL)
+		return (NULL);
+
+	strcpy(joined, s1);
+	strncat(joined, s2, n);
 
 	return (joined);
 	free(joined);
