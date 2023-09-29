@@ -10,24 +10,27 @@
 int main(int argc, char *argv[])
 {
 	int t;
-	long int result;
+	long int result = 1, num;
+	char *end;
 
-	if (argc > 1)
+	if (argc > 2)
 	{
 		for (t = 1; t < argc; t++)
 		{
-			if (argc == 3)
-			{
-				result = atoi(argv[1]) * atoi(argv[2]);
-				printf("%ld\n", result);
-			}
+			num = strtol(argv[t], &end, 10);
 
-			else
+			if (*end != '\0' || num < 0)
 			{
 				printf("Error\n");
 				return (1);
 			}
+			result *= num;
 		}
+
+		printf("%ld\n", result);
 	}
+	else
+		printf("0\n");
+
 	return (0);
 }
