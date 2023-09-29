@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * main - prints all arguments it receives
+ * main - multiplies two numbers
  * @argc: number of arguments
  * @argv: arguments passed into the program
  *
@@ -9,28 +9,25 @@
  */
 int main(int argc, char *argv[])
 {
-	int t;
-	char *end;
-	long int result = 0, num;
+	int t, argvalue;
+	int sum = 0;
 
 	if (argc > 1)
 	{
 		for (t = 1; t < argc; t++)
 		{
-			num = strtol(argv[t], &end, 10);
-
-			if (*end != '\0' || num < 0)
+			argvalue = atoi(argv[t]);
+			if (argvalue == 0)
 			{
 				printf("Error\n");
 				return (1);
 			}
-			result += num;
+			sum += argvalue;
 		}
-		printf("%ld\n", result);
+		printf("%d\n", sum);
 	}
 
 	else
 		printf("0\n");
-
 	return (0);
 }
