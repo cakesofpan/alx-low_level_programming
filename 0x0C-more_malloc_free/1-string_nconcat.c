@@ -11,8 +11,11 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *joined;
+	size_t total;
 
-	joined = malloc(sizeof(char));
+	total = strlen(s1) + strlen(s2) + 2;
+	joined = malloc(total);
+
 	strcpy(joined, s1);
 
 	if (n >= strlen(s2))

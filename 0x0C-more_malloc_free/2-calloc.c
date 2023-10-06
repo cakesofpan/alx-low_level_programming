@@ -10,11 +10,19 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	int *result;
+	size_t total;
 
-	result = malloc(nmemb * sizeof(unsigned int));
-	if (nmemb == 0 || size == 0 || result == 0)
+	if (nmemb == 0 || size == 0)
 	{
 		exit(0);
 	}
+
+	total = nmemb * size;
+	result = malloc(total);
+
+	if (result == NULL)
+		return (NULL);
+	memset(result, 0, total);
+
 	return (result);
 }

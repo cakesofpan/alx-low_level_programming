@@ -12,12 +12,18 @@ int *array_range(int min, int max)
 	int t, q;
 	int *arr;
 
-	q = max - min;
+	if (min > max)
+		return (NULL);
+
+	q = max - min + 1;
 	arr = malloc(q * sizeof(int));
 
-	for (t = min; t <= max; t++)
+	if (arr == NULL)
+		return (NULL);
+
+	for (t = 0; t <= q; t++)
 	{
-		putchar(arr[t]);
+		arr[t] = min + 1;
 	}
 	return (arr);
 	free(arr);
