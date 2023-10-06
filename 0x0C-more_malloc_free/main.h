@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 void *malloc_checked(unsigned int b);
 int _putchar(char c);
