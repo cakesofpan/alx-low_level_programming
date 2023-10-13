@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /**
  * main - performs simple operations
  * @argc: argument count
