@@ -12,19 +12,19 @@ char *create_array(unsigned int size, char c)
 	char *arr;
 	unsigned int t;
 
+	if (size == 0)
+		return (NULL);
+
 	arr = malloc(size * sizeof(char));
 
 	if (arr != NULL)
-	{
-		for (t = 0; t < size; t++)
-		{
-			arr[t] = c;
-			putchar(arr[t]);
-		}
-	}
-	else
-		return (0);
+		return (NULL);
 
-	return (arr);
+	for (t = 0; t < size; t++)
+	{
+		arr[t] = c;
+	}
+
 	free(arr);
+	return (arr);
 }

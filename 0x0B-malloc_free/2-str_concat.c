@@ -45,6 +45,5 @@ char *str_concat(char *s1, char *s2)
 		joined[t] = s2[u];
 	}
 	joined[totallen] = '\0';
-	free(joined);
 	return (joined);
 }
