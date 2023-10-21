@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * strdup - returns allocated space with a copy of given string
+ * _strdup - returns allocated space with a copy of given string
  * @str: string to be copied
  *
  * Return: pointer to copied string
@@ -9,15 +9,27 @@
 char *_strdup(char *str)
 {
 	char *dupstr;
+	int s = 0, t = 1;
 
-	dupstr = malloc(sizeof(char));
-
-	if (str != NULL)
-		dupstr = strdup(str);
-
-	else
+	if (str == NULL)
 		return (NULL);
 
-	return (dupstr);
+	while (str[t])
+	{
+		t++;
+	}
+
+	dupstr = malloc((sizeof(char) * t) + 1);
+
+	if (dupstr == NULL)
+		return (NULL);
+
+	while (s < t)
+	{
+		dupstr[s] = str[s];
+		s++;
+	}
+	dupstr[s] = '\0';
 	free(dupstr);
+	return (dupstr);
 }
