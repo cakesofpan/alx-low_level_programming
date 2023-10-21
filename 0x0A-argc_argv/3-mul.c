@@ -9,28 +9,20 @@
  */
 int main(int argc, char *argv[])
 {
-	int t;
-	long int result = 1, num;
-	char *end;
+	int num1, num2;
 
-	if (argc > 2)
+	if (argc == 3)
 	{
-		for (t = 1; t < argc; t++)
-		{
-			num = strtol(argv[t], &end, 10);
-
-			if (*end != '\0' || num < 0)
-			{
-				printf("Error\n");
-				return (1);
-			}
-			result *= num;
-		}
-
-		printf("%ld\n", result);
+		num1 = atoi(argv[1]);
+		num2 = atoi(argv[2]);
+		printf("%d\n", num1 * num2);
 	}
+
 	else
-		printf("0\n");
+	{
+		printf("Error\n");
+		return (1);
+	}
 
 	return (0);
 }

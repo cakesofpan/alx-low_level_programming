@@ -9,25 +9,32 @@
  */
 int main(int argc, char *argv[])
 {
-	int t, argvalue;
-	int sum = 0;
+	int t;
+	unsigned int u, sum = 0;
+	char *s;
 
 	if (argc > 1)
 	{
 		for (t = 1; t < argc; t++)
 		{
-			argvalue = atoi(argv[t]);
-			if (argvalue == 0)
+			s = argv[t];
+
+			for (u = 0; u < strlen(s); u++)
 			{
-				printf("Error\n");
-				return (1);
+				if (s[u] < 48 || s[u] > 57)
+				{
+					printf("Error\n");
+					return (1);
+				}
 			}
-			sum += argvalue;
+			sum += atoi(s);
+			s++;
 		}
 		printf("%d\n", sum);
 	}
 
 	else
 		printf("0\n");
+
 	return (0);
 }
