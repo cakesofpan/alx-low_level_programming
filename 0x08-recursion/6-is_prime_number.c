@@ -11,13 +11,13 @@ int prime(int n, int div)
 {
 	if (n <= 1)
 		return (0);
-	
+
 	if (n % div == 0 && div > 1)
 		return (0);
 
 	if ((n / div) < div)
 		return (1);
-	
+
 	return (prime(n, div + 1));
 }
 
