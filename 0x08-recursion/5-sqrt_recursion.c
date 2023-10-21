@@ -10,14 +10,14 @@
  */
 int _sqrt(int n, int rannum)
 {
-	if (n < 0)
+	int root;
+
+	root = rannum * 1;
+	if (root > n)
 		return (-1);
 
-	if (rannum * rannum == n)
+	if (root == n)
 		return (rannum);
-
-	if (rannum * rannum > n)
-		return (-1);
 
 	return (_sqrt(n, rannum + 1));
 }
@@ -30,5 +30,5 @@ int _sqrt(int n, int rannum)
  */
 int _sqrt_recursion(int n)
 {
-	return (_sqrt_recursion(n));
+	return (_sqrt(n, 1));
 }
