@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - performs simple operations
@@ -9,31 +10,36 @@
  */
 int main(int argc, char *argv[])
 {
-	int bytes;
+	int bytes, index;
+	int (*address)(int, char **) = main;
+	unsigned char opcode;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
-		return (1);
+		exit (1);
 	}
 
+	bytes = atoi(argv[1]);
 	if (bytes < 0)
 	{
 		printf("Error\n");
-		return (2);
+		exit(2);
 	}
 	
-	void printop(char *location, int bytes)
+	for (index = 0; index < bytes; index++)
 	{
-		int t;
+		opcode = *(unsigned char *)address;
+		printf("%.2x", opcode);
 
-		for (t = 0; t < bytes; t++)
-			printf("%02x", (unsigned char)location[t]);
+		if (index == bytes - 1)
+			continue;
+		printf(" ");
 
-		printf("\n");
+		address++;
 	}
 
-	printop((char *)main, bytes);
+	printf("\n");
 
 	return (0);
 }

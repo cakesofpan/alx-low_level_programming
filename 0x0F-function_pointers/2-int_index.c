@@ -10,9 +10,9 @@
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
-	int t;
+	int t = 0;
 
-	if (size <= 0)
+	if (size > 0)
 	{
 		if (array != NULL && cmp != NULL)
 		{
