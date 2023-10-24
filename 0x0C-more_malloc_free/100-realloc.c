@@ -10,29 +10,40 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *mpya;
-
-	mpya = malloc(new_size);
-
-	if (new_size == 0)
-	{
-		if (ptr != NULL)
-			free(ptr);
-
-		return (NULL);
-	}
-
-	if (ptr == NULL)
-		return (malloc(new_size));
+	char *mpya;
+	unsigned int t;
 
 	if (new_size == old_size)
 		return (ptr);
 
+	if (ptr == NULL)
+	{
+		mpya = malloc(new_size);
+
+		if (mpya == NULL)
+			return (NULL);
+		return (mpya);
+	}
+
+	else
+	{
+		if (new_size == 0)
+		{
+			free(ptr);
+			return (NULL);
+		}
+	}
+
+	mpya = malloc(new_size);
+
 	if (mpya == NULL)
 		return (NULL);
 
-	memcpy(mpya, ptr, (old_size < new_size) ? old_size : new_size);
-	free(mpya);
+	for (t = 0; t < old_size && t < new_size; t++)
+	{
+		mpya[t] = ((char *) ptr)[t];
+	}
+
 	free(ptr);
 	return (mpya);
 }

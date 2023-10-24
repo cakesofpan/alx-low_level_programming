@@ -4,30 +4,45 @@
  * number - checks if string contains only digits
  * @s: string to be checked
  *
- * Return: true
+ * Return: 0 if non-digit, 1 otherwise
  */
-bool number(char *s)
+int number(char *s)
 {
-	while (*s)
+	int t = 0;
+	while (s[t])
 	{
-		if (!isdigit(s))
-			return (false);
+		if (s[t] < '0' || s[t] > '9')
+			return (0);
 
-		s++;
+		t++;
 	}
-	return (true);
+	return (1);
 }
 
 /**
- * mul - multiplies 2 positive nums
- * @num1: an int
- * @num2: another int
+ * _strlen - returns length of a string
+ * @s: string to evaluate
  *
- * Return: the result
+ * Return: the length of the string
  */
-long int mul(long int num1, long int num2)
+int _strlen(char *s)
 {
-	return (num1 * num2);
+	int t = 0;
+
+	while (s[t] != '\0')
+	{
+		t++;
+	}
+	return (t);
+}
+
+/**
+ * errors - handles errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
 }
 
 /**
@@ -40,27 +55,53 @@ long int mul(long int num1, long int num2)
 int main(int argc, char *argv[])
 {
 	char *str1, *str2;
-	long int num1, num2, result;
+	long int len, len1, len2, t, carry, num1, num2, *result, a = 0;
 
 	str1 = argv[1];
 	str2 = argv[2];
-	if (argc != 3)
+
+	if (argc != 3 || !isdigit(str1) || !isdigit(str2))
+		errors();
+
+	len1 = _strlen(str1);
+	len2 = _strlen(str2);
+	len = len1 + len2 + 1;
+
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (1);
+	
+	for (t = 0; t <= len1 + len2; t++)
+		result[t] = 0;
+
+	for (len1 = len1 - 1; len1 >= 0; len--)
 	{
-		printf("Error\n");
-		return (98);
+		num1 = str1[len1] - '0';
+		carry = 0;
+		for (len2 = _strlen(str2) - 1; len2 >= 0; len2--)
+		{
+			num2 = str2[len2] - '0';
+			carry += result[len1 + len2 + 1] + (num1 * num2);
+			result[len1 + len2 + 1] = carry % 10;
+			carry /= 10;
+		}
+		if (carry > 0)
+			result[len1 + len2 + 1] += carry;
 	}
 
-	if (!number(str1) || !number(str2))
+	for (t = 0; t < len - 1; t++)
 	{
-		printf("Error\n");
-		return (98);
+		if (result[t])
+			a = 1;
+
+		if (a)
+			_putchar(result[t] + '0');
 	}
+	if (!a)
+		_putchar('0');
 
-	num1 = atoll(str1);
-	num2 = atoll(str2);
-	result = mul(num1, num2);
-
-	printf("%ld\n", result);
+	_putchar('\n');
+	free(result);
 
 	return (0);
 }

@@ -11,22 +11,43 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *joined;
-	size_t total;
+	unsigned int t = 0, u = 0, v = 0, w = 0;
 
-	total = strlen(s1) + strlen(s2) + 2;
-	joined = malloc(total);
-
-	strcpy(joined, s1);
-
-	if (n >= strlen(s2))
-		strcat(joined, s2);
-
-	else
-		strncat(joined, s2, n);
+	if (s1 == NULL)
+		return (NULL);
 
 	if (s2 == NULL)
-		_putchar(' ');
+		return (NULL);
 
+	while (s1[t])
+		t++;
+
+	while (s2[v])
+		v++;
+
+	if (n >= v)
+		w = t + v;
+
+	else
+		w = t + n;
+
+	joined = malloc(sizeof(char) * w + 1);
+	if (joined == NULL)
+		return (NULL);
+
+	v = 0;
+	while (u < w)
+	{
+		if (u <= t)
+			joined[u] = s1[u];
+
+		if (u >= t)
+		{
+			joined[u] = s2[v];
+			v++;
+		}
+		u++;
+	}
+	joined[u] = '\0';
 	return (joined);
-	free(joined);
 }

@@ -9,12 +9,12 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int *result;
-	size_t total;
+	char *result;
+	int t = 0, total;
 
 	if (nmemb == 0 || size == 0)
 	{
-		exit(0);
+		return (NULL);
 	}
 
 	total = nmemb * size;
@@ -22,7 +22,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	if (result == NULL)
 		return (NULL);
-	memset(result, 0, total);
+	while (t < total)
+	{
+		result[t] = 0;
+		t++;
+	}
 
 	return (result);
 }
