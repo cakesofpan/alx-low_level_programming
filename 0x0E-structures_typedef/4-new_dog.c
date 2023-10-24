@@ -12,31 +12,45 @@
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	unsigned int n1, n2, t;
 	dog_t *dogobj;
+
+	if (name == NULL || owner == NULL)
+		return (NULL);
 
 	dogobj = malloc(sizeof(dog_t));
 
 	if (dogobj == NULL)
 		return (0);
-
-	dogobj->name = malloc(strlen(name) + 1);
+	
+	for (n1 = 0; name[n1]; n1++)
+		;
+	n1++;
+	dogobj->name = malloc(n1 * sizeof(char));
 	if (dogobj->name == NULL)
 	{
-		free(dogobj->owner);
+		free(dogobj);
 		return (NULL);
 	}
-	strcpy(dogobj->name, name);
+	
+	for (t = 0; t < n1; t++)
+		dogobj->name[t] = name[t];
 
 	dogobj->age = age;
+	for (n2 = 0; owner[n2]; n2++)
+		;
+	n2++;
 
-	dogobj->owner = malloc(strlen(owner) + 1);
+	dogobj->owner = malloc(n2 * sizeof(char));
 	if (dogobj->owner == NULL)
 	{
 		free(dogobj->name);
+		free(dogobj);
 		return (NULL);
 	}
-	strcpy(dogobj->owner, owner);
+	
+	for (t = 0; t < n2; t++)
+		dogobj->owner[t] = owner[t];
 
-	free(dogobj);
 	return (dogobj);
 }
