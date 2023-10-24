@@ -9,7 +9,8 @@
  */
 int main(int argc, char *argv[])
 {
-	 int (*oprt)(int, int);
+	int (*oprt)(int, int);
+	char *op;
 
 	if (argc != 4)
 	{
@@ -17,7 +18,8 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	oprt = get_op_func(argv[2]);
+	op = argv[2];
+	oprt = get_op_func(op);
 
 	if (!oprt)
 	{
