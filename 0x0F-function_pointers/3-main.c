@@ -9,38 +9,22 @@
  */
 int main(int argc, char *argv[])
 {
-	 int num1 = atoi(argv[1]);
-    int num2 = atoi(argv[3]);
-    char operator = *argv[2];
-	int result;
+	 int (*oprt)(int, int);
 
-    if (argc != 4) {
-        printf("Error\n");
-        return (98);
-    }
+	if (argc != 4)
+	{
+		printf("Error\n)");
+		exit(98);
+	}
 
-	if (operator != '+' && operator != '-' && operator != '*' && operator != '/' && operator != '%') {
-        printf("Error\n");
-        return (99);
-    }
+	oprt = get_op_func(argv[2]);
 
-    if ((operator == '/' || operator == '%') && num2 == 0) {
-        printf("Error\n");
-        return (100);
-    }
+	if (!oprt)
+	{
+		printf("Error\n");
+		exit(99);
+	}
 
-    if (operator == '+')
-        result = op_add(num1, num2);
-    else if (operator == '-')
-	    result = op_sub(num1, num2);
-    else if (operator == '*')
-        result = op_mul(num1, num2);
-    else if (operator == '/')
-        result = op_div(num1, num2);
-    else
-        result = op_mod(num1, num2);
-
-    printf("%d\n", result);
-
-    return (0);
+	printf("%d\n", oprt(atoi(argv[1]), atoi(argv[3])));
+	return (0);
 }

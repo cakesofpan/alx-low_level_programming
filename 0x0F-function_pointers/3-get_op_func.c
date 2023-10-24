@@ -1,12 +1,30 @@
 #include "3-calc.h"
 
 /**
- * main - prints hello
+ * get_op_func - selects correct function to perform operation
+ * @s: pointer to a function taking two ints as parameters
  *
- * Return: Always 0
+ * Return: correct operation
  */
-char let(char a)
+int (*get_op_func(char *s))(int, int)
 {
-	putchar(a);
+	int t = 0;
+
+	op_t ops[] = {
+		{ "+", op_add },
+		{ "-", op_sub },
+		{ "*", op_mul },
+		{ "/", op_div },
+		{ "%", op_mod },
+		{ NULL, NULL }
+	};
+
+	while (t < 5)
+	{
+		if (strcmp(s, ops[t].op) == 0)
+			return (ops[t].f);
+
+		t++;
+	}
 	return (0);
 }
