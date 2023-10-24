@@ -1,26 +1,21 @@
-section .data
-	hello db "Hello, Holberton", 0 ; Null-terminated string
+extern printf		; the C function, to be called
 
-section .text
-    global main
+	section .data		; Data section, initialized variables
+	db "Hello, Holberton", 0 ; C string needs 0
+	db "%s", 10, 0		; The printf format, "\n", '0'
 
-    extern printf
-    global _start
+	section .text		; Code section.
 
-_start:
-    push rbp        ; Prologue
-    mov rdi, hello  ; Format string
-    call printf     ; Call printf
-    add rsp, 8      ; Clean up the stack (printf uses XMM registers)
-    pop rbp         ; Epilogue
+	global main		; the standard gcc entry point
+				; the program label for the entry point
+	push	rbp		; set up stack frame, must be alligned
 
-    ; Exit the program
-    mov rax, 60     ; syscall number for exit
-    xor rdi, rdi    ; Exit status (0)
-    syscall
+	mov	rdi, fmt
+	mov	rsi, msg
+	mov	rax,0		; or can be xor rax, rax
+	call	printf		; Call C function
 
-main:
-    ; No need to do anything in the main function
+	pop	rbp		; restore stack
 
-section .bss
-	res resq 1
+	mov	rax,0		; normal, no error, return value
+	ret			; return
