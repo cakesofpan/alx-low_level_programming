@@ -29,5 +29,5 @@ int check_prime(int n, int t)
  */
 int is_prime_number(int n)
 {
-	return (check_prime(n, t + 1));
+	return (check_prime(n, 1));
 }
