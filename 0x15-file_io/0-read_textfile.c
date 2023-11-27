@@ -19,9 +19,12 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	while ((ch = getc(fileptr)) != EOF && t < letters)
 	{
-		printf("%c", ch);
+		printf("%c\n", ch);
 		t++;
 	}
+
+	if (t != letters)
+		return (0);
 
 	fclose(fileptr);
 	return (0);
